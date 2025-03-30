@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false",
-    "test-by-docker": "ng test --browsers ChromeHeadlessNoSandbox"
+    "test-by-docker": "ng test --browsers ChromeHeadlessNoSandbox --watch=false"
   },
   "private": true,
   "dependencies": {
