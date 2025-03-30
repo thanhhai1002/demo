@@ -1,4 +1,18 @@
-FROM node:alpine
+# FROM node:alpine
+
+# USER node
+
+# WORKDIR /app/test
+
+# COPY --chown=node:node ./package.json .
+
+# RUN npm install
+
+# COPY --chown=node:node . .
+
+# CMD ["npm", "start"]
+
+FROM node:alpine as builder
 
 USER node
 
@@ -9,5 +23,8 @@ COPY --chown=node:node ./package.json .
 RUN npm install
 
 COPY --chown=node:node . .
+RUN npm run build 
 
-CMD ["npm", "start"]
+FROM nginx
+
+COPY --from=builder app/test/dist/source-demo /usr/share/nginx/html
