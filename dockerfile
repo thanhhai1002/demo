@@ -1,7 +1,8 @@
 FROM node:16-alpine
 
+RUN apk add --no-cache chromium
+ENV CHROME_BIN=/usr/bin/chromium-browser
 USER node
-
 WORKDIR /app/test
 
 COPY --chown=node:node ./package.json .
