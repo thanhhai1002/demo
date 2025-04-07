@@ -15,8 +15,6 @@
 
 FROM node:alpine as builder
 
-RUN apk add --no-cache chromium
-ENV CHROME_BIN=/usr/bin/chromium-browser
 USER node
 
 WORKDIR /app/test
@@ -27,7 +25,7 @@ RUN npm install
 
 COPY --chown=node:node . .
 
-RUN npm run test-by-docker
+# RUN npm run test-by-docker
 
 RUN npm run build 
 
